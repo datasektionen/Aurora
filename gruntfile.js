@@ -13,7 +13,7 @@ module.exports = function (grunt) {
             }
         },
         watch: {
-            files: ['<%= less.files %>'],
+            files: ['static/css/**/*.less'],
             tasks: ['less']
         }
     });
