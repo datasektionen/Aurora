@@ -1,5 +1,6 @@
 {
   "version": "1.0.0-*",
+  "webroot": "static",
   "compilationOptions": {
     "emitEntryPoint": true
   },

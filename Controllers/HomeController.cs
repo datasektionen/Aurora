@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
 
 namespace Docs.Controllers
@@ -10,7 +6,7 @@ namespace Docs.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            return View("About");
         }
 
         public IActionResult About()
