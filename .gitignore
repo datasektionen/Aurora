@@ -17,3 +17,4 @@ project.lock.json
 artifacts/
 *.nupkg
 node_modules
+*.css
