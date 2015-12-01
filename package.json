@@ -4,5 +4,11 @@
   "dependencies": {
     "grunt": "^0.4.5"
   },
-  "repository": { "url": "https://github.com/datasektionen/Aurora.git" }
+  "repository": {
+    "url": "https://github.com/datasektionen/Aurora.git"
+  },
+  "devDependencies": {
+    "grunt-contrib-less": "^1.1.0",
+    "grunt-contrib-watch": "^0.6.1"
+  }
 }
