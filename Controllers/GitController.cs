@@ -15,18 +15,14 @@ namespace aurora.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
-            var repos = new List<DirectoryInfo>();
             var root = new DirectoryInfo(Directory.GetCurrentDirectory());
             ViewData["Title"] = "Backoffice";
             ViewData["RepoFolder"] = Engine.RepoFolder;
             ViewData["RepoURL"] = Engine.RepoURL;
             ViewData["Now"] = Engine.Now;
             ViewData["HasContent"] = Engine.HasContent;
-
-            foreach (DirectoryInfo dir in root.GetDirectories())
-                repos.Add(dir);
-
             ViewData["Repos"] = root.GetDirectories();
+
             return View("Backoffice");
         }
 
