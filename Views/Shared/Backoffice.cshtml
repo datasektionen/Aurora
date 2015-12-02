@@ -42,14 +42,19 @@
         }
     }
     </ul>
+    <a href="/Backoffice/Clone" class="button theme-color btn-color">Klona från GitHub</a>
     <hr />
     <h2>Dokument-status</h2>
-    @if ((bool) ViewData["HasContent"])
-    {
-        @: Servern rapporterar att det finns behandlat innehåll.
-    }
-    else
-    {
-        @: Servern rapporterar att inget dokument-träd ännu har blivit parsat.
-    }
+    <p>
+        @if (ViewData["RootDoc"] != null)
+        {
+            @: Servern rapporterar att det finns behandlat innehåll.
+        }
+        else
+        {
+            @: Servern rapporterar att inget dokument-träd ännu har blivit parsat.
+        }
+    </p>
+    <a href="/Backoffice/Read" class="button theme-color btn-color">Läs Git-repot till minnet</a>
+    
 </div>
