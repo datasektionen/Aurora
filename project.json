@@ -6,7 +6,8 @@
     "Microsoft.AspNet.Diagnostics": "1.0.0-rc1-final",
     "Microsoft.AspNet.Mvc": "6.0.0-rc1-final",
     "Microsoft.AspNet.Server.Kestrel": "1.0.0-rc1-final",
-    "Microsoft.AspNet.StaticFiles": "1.0.0-rc1-final"
+    "Microsoft.AspNet.StaticFiles": "1.0.0-rc1-final",
+    "LibGit2Sharp": "0.22.0-pre20151023210959"
   },
 
   "commands": {
@@ -14,7 +15,7 @@
   },
 
   "frameworks": {
-    "dnxcore50": {}
+    "dnx451": {}
   },
 
   "exclude": [

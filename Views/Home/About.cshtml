@@ -5,3 +5,8 @@
 <h3>@ViewData["Message"]</h3>
 
 <p>Use this area to provide additional information.</p>
+
+@foreach (string s in "1,2,3".Split(','))
+{
+    @: s is equal to @s<br />
+}
