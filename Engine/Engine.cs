@@ -12,6 +12,7 @@ namespace docs.Engine
         private static DateTime _now;
         private static bool _hasContent = false;
         public static string RepoURL = "https://github.com/datasektionen/Docs.git";
+        public Document rootDoc = new Document("Dokumentation", "docs");
 
         public static DateTime Now
         {

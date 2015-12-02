@@ -9,10 +9,16 @@ namespace docs.Engine
     {
         public string Slug { get; private set; }
         public string Title { get; private set; }
-        public string Body { get; private set; }
+        public string Body { get; set; }
         public List<Document> Children { get; private set; }
 
-        public Document(string Title, string Body, string Slug)
+        public Document(string Title, string Slug)
+        {
+            this.Title = Title;
+            this.Slug = Slug;
+        }
+
+        public Document(string Title, string Slug, string Body)
         {
             this.Title = Title;
             this.Body = Body;
