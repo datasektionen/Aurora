@@ -56,14 +56,33 @@
         }
     </p>
     <a href="/Backoffice/Read" class="button theme-color btn-color">Läs Git-repot till minnet</a>
-    
+
     <ul>
         @{ 
             var root = (aurora.Document) ViewData["RootDoc"];
             foreach (var childDoc in root.Children as IEnumerable<aurora.Document>)
             {
-                @:<li><code>@childDoc.Slug: @childDoc.Title</code></li>
+                @:<li>
+                @:  <code>@childDoc.Slug: @childDoc.Title</code>
+
+                if (childDoc.Children != null && childDoc.Children.Count > 0)
+                {
+                    foreach (var childChildDoc in childDoc.Children as IEnumerable<aurora.Document>)
+                    {
+                        @: <ul>
+                        @:   <li>
+                        @:     <code>@childChildDoc.Slug: @childChildDoc.Title</code>
+                        @:   </li>
+                        @: </ul>
+                    }
+                }
+                @:</li>
             }
         }
     </ul>
+
+    @root.Title
+    @root.Slug
+    @root.Children.Count
+    @root.Body
 </div>

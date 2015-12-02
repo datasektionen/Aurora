@@ -46,11 +46,11 @@ namespace aurora.Controllers
             foreach (var d in repo.GetDirectories())
             {
                 // Create a root document
-                var slug = Regex.Replace(d.Name, "[^a-z0-9-]", "");
+                var slug = Regex.Replace(d.Name, "[^A-Za-z0-9-]", "").ToLower();
                 var doc = new Document(d.Name, slug);
                 var children = doc.Children;
 
-                foreach (var f in repo.GetFiles())
+                foreach (var f in d.GetFiles())
                 {
                     var content = new StreamReader(f.FullName).ReadToEnd();
 
