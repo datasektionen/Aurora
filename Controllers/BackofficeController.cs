@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
 using docs.Engine;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace aurora.Controllers
 {
@@ -31,8 +32,8 @@ namespace aurora.Controllers
             Response.Redirect("/Backoffice/");
         }
 
-        [Route("Parse")]
-        public IActionResult Parse()
+        [Route("Read")]
+        public IActionResult Read()
         {
             string repoFolder = Engine.RepoFolder;
             var repo = new DirectoryInfo(repoFolder);
@@ -40,9 +41,25 @@ namespace aurora.Controllers
             // For all directories
             foreach (var d in repo.GetDirectories())
             {
+                // Create a root document
+                var slug = Regex.Replace(d.Name, "[^a-z0-9-]", "");
+                var doc = new Document(d.Name, slug);
+                var children = doc.Children;
+                
                 foreach (var f in repo.GetFiles())
                 {
                     var content = new StreamReader(f.FullName).ReadToEnd();
+
+                    // Fill the root docuement
+                    if (f.Name.ToLower().Equals("index.md"))
+                    {
+                        doc.Body = content;
+                    }
+                    // Or append it with sub-documents
+                    else
+                    {
+                        doc.Children.Add(new Document(f.Name, slug, content));
+                    }
                 }
             }
 
