@@ -16,6 +16,7 @@ namespace docs.Engine
         {
             this.Title = Title;
             this.Slug = Slug;
+            Children = new List<Document>();
         }
 
         public Document(string Title, string Slug, string Body)
@@ -23,6 +24,7 @@ namespace docs.Engine
             this.Title = Title;
             this.Body = Body;
             this.Slug = Slug;
+            Children = new List<Document>();
         }
     }
 }
