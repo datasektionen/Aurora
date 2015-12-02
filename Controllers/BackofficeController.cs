@@ -1,16 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
 using docs.Engine;
-using Microsoft.AspNet.Http;
 using System.IO;
 
 namespace aurora.Controllers
 {
     [Route("/Backoffice/")]
-    public class GitController : Controller
+    public class BackofficeController : Controller
     {
         // GET: /<controller>/
         public IActionResult Index()
@@ -32,6 +29,24 @@ namespace aurora.Controllers
             Engine.Now = DateTime.Now;
             await Task.Factory.StartNew(() => LibGit2Sharp.Repository.Clone(Engine.RepoURL, Engine.RepoFolder));
             Response.Redirect("/Backoffice/");
+        }
+
+        [Route("Parse")]
+        public IActionResult Parse()
+        {
+            string repoFolder = Engine.RepoFolder;
+            var repo = new DirectoryInfo(repoFolder);
+
+            // For all directories
+            foreach (var d in repo.GetDirectories())
+            {
+                foreach (var f in repo.GetFiles())
+                {
+                    var content = new StreamReader(f.FullName).ReadToEnd();
+                }
+            }
+
+            return View();
         }
     }
 }
