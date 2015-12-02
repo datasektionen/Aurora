@@ -20,6 +20,7 @@ namespace aurora.Controllers
             ViewData["Now"] = Engine.Now;
             ViewData["HasContent"] = Engine.HasContent;
             ViewData["Repos"] = root.GetDirectories();
+            ViewData["RootDoc"] = Engine.RootDoc;
 
             return View("Backoffice");
         }
@@ -33,10 +34,14 @@ namespace aurora.Controllers
         }
 
         [Route("Read")]
-        public IActionResult Read()
+        public void Read()
         {
             string repoFolder = Engine.RepoFolder;
             var repo = new DirectoryInfo(repoFolder);
+            Engine.RootDoc = new Document("Dokumentation", "docs");
+
+            if (repoFolder.Equals("repo0"))
+                Response.Redirect("/Backoffice/?err");
 
             // For all directories
             foreach (var d in repo.GetDirectories())
@@ -45,7 +50,7 @@ namespace aurora.Controllers
                 var slug = Regex.Replace(d.Name, "[^a-z0-9-]", "");
                 var doc = new Document(d.Name, slug);
                 var children = doc.Children;
-                
+
                 foreach (var f in repo.GetFiles())
                 {
                     var content = new StreamReader(f.FullName).ReadToEnd();
@@ -61,9 +66,11 @@ namespace aurora.Controllers
                         doc.Children.Add(new Document(f.Name, slug, content));
                     }
                 }
-            }
 
-            return View();
+                Engine.RootDoc.Children.Add(doc);
+            }
+            
+            Response.Redirect("/Backoffice/");
         }
     }
 }
