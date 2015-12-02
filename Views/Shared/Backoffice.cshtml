@@ -1,5 +1,30 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿<header>
+    <div class="header-inner">
+        <div class="header-left">
+            <a href="/">&laquo; Till dokumentationen</a>
+        </div>
+        <h2>@ViewData["Title"]</h2>
+        <div class="header-right">
+            <span>Ändringar?</span>
+            <a href="/Backoffice/Clone" class="primary-action">Klona från GitHub</a>
+        </div>
+        <div class="clear"></div>
+    </div>
+</header>
+<div id="content">
+    <h2>Git-status</h2>
+
+    <p>Senaste kloning från GitHub gjordes @ViewData["Now"]</p>
+    <p>@ViewData["Repos"]</p>
+    <p>Use this area to provide additional information.</p>
+    <p>Example of @@foreach in ASP.NET 5 Razor:</p>
+    <ul>
+    @foreach (System.IO.DirectoryInfo d in ViewData["Repos"] as IEnumerable<System.IO.DirectoryInfo>)
+    {
+        if (d.Name.StartsWith("repo-"))
+        {
+            @: <li><code>@d (@d.GetFiles().Length fil(er), @d.GetDirectories().Length mapp(ar))</code></li>
+        }
+    }
+    </ul>
+</div>

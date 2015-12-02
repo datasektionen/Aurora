@@ -4,14 +4,6 @@
         <meta charset="utf-8" />
         <title>@ViewData["Title"] - Datasektionen Docs</title>
         <link rel="stylesheet" href="~/static/css/compiled.css" />
-    </head>
-    <body>
-        <div id="methone-container-replace"></div>
-        <div id="methone-pushdown"></div>
-        <div id="application" class="blue">
-            @RenderBody()
-        </div>
-
         <script type="text/javascript">
           window.tbaas_conf = {
             system_name: "aurora",
@@ -38,7 +30,15 @@
             ]
           }
         </script>
-
         <script async src="http://methone.datasektionen.se"></script>
+    </head>
+    <body>
+        <div id="methone-container-replace"></div>
+        <div id="methone-pushdown"></div>
+
+        @{await FlushAsync(); }
+        <div id="application" class="blue">
+            @RenderBody()
+        </div>
     </body>
 </html>
