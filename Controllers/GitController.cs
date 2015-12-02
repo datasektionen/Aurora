@@ -21,6 +21,7 @@ namespace aurora.Controllers
             ViewData["RepoFolder"] = Engine.RepoFolder;
             ViewData["RepoURL"] = Engine.RepoURL;
             ViewData["Now"] = Engine.Now;
+            ViewData["HasContent"] = Engine.HasContent;
 
             foreach (DirectoryInfo dir in root.GetDirectories())
                 repos.Add(dir);
