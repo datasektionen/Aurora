@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
+using docs.Engine;
+using Microsoft.AspNet.Http;
+using System.IO;
 
 namespace aurora.Controllers
 {
@@ -12,15 +15,26 @@ namespace aurora.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
+            var repos = new List<DirectoryInfo>();
+            var root = new DirectoryInfo(Directory.GetCurrentDirectory());
+            ViewData["Title"] = "Backoffice";
+            ViewData["RepoFolder"] = Engine.RepoFolder;
+            ViewData["RepoURL"] = Engine.RepoURL;
+            ViewData["Now"] = Engine.Now;
+
+            foreach (DirectoryInfo dir in root.GetDirectories())
+                repos.Add(dir);
+
+            ViewData["Repos"] = root.GetDirectories();
             return View("Backoffice");
         }
 
         [Route("Clone")]
-        public IActionResult Clone()
+        public async Task Clone()
         {
-            LibGit2Sharp.Repository.Clone("https://github.com/datasektionen/Docs.git", "repo");
-
-            return View("Backoffice");
+            Engine.Now = DateTime.Now;
+            await Task.Factory.StartNew(() => LibGit2Sharp.Repository.Clone(Engine.RepoURL, Engine.RepoFolder));
+            Response.Redirect("/Backoffice/");
         }
     }
 }
