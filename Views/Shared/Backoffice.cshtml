@@ -1,4 +1,9 @@
-﻿<header>
+﻿@{
+    ViewData["ServerStartTime"] = System.Diagnostics.Process.GetCurrentProcess().StartTime;
+    ViewData["ServerUpTime"] = DateTime.Now - System.Diagnostics.Process.GetCurrentProcess().StartTime;
+}
+
+<header>
     <div class="header-inner">
         <div class="header-left">
             <a href="/">&laquo; Till dokumentationen</a>
@@ -12,12 +17,22 @@
     </div>
 </header>
 <div id="content">
-    <h2>Git-status</h2>
-
+    <h2>Server-status</h2>
+    <p>
+        Servern startades
+        <strong>@ViewData["ServerStartTime"]</strong>
+        (uptime på @ViewData["ServerUpTime"])
+    </p>
     <p>Senaste kloning från GitHub gjordes @ViewData["Now"]</p>
-    <p>@ViewData["Repos"]</p>
-    <p>Use this area to provide additional information.</p>
-    <p>Example of @@foreach in ASP.NET 5 Razor:</p>
+    <p>
+        <em>
+            Om ovanstående datum är 1 jan 0001 beror detta på att
+            senaste <code>git clone</code> gjordes innan serverns start.
+        </em>
+    </p>
+    <hr />
+    <h2>Git-status</h2>
+    <p>Följande kloner av repositoryt <code>@ViewData["RepoURL"]</code> finns på servern:</p>
     <ul>
     @foreach (System.IO.DirectoryInfo d in ViewData["Repos"] as IEnumerable<System.IO.DirectoryInfo>)
     {
@@ -27,4 +42,14 @@
         }
     }
     </ul>
+    <hr />
+    <h2>Dokument-status</h2>
+    @if ((bool) ViewData["HasContent"])
+    {
+        @: Servern rapporterar att det finns behandlat innehåll.
+    }
+    else
+    {
+        @: Servern rapporterar att inget dokument-träd ännu har blivit parsat.
+    }
 </div>
