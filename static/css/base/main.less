@@ -2,6 +2,10 @@
 @import "colors.less";
 @import url(https://fonts.googleapis.com/css?family=Lato:400,300,700,400italic,700italic);
 
+* {
+  transition: all 0.5s;
+}
+
 body {
     background: @body_background;
     font-family: @font_family;
@@ -58,6 +62,11 @@ button, .button {
 
 .align-center {
     text-align: center;
+}
+
+#methone-container-replace::shadow path {
+	fill: white;
+	stroke: white;
 }
 
 #application {
