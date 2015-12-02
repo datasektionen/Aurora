@@ -57,4 +57,13 @@
     </p>
     <a href="/Backoffice/Read" class="button theme-color btn-color">Läs Git-repot till minnet</a>
     
+    <ul>
+        @{ 
+            var root = (aurora.Document) ViewData["RootDoc"];
+            foreach (var childDoc in root.Children as IEnumerable<aurora.Document>)
+            {
+                @:<li><code>@childDoc.Slug: @childDoc.Title</code></li>
+            }
+        }
+    </ul>
 </div>
