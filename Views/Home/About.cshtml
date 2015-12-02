@@ -1,12 +1,29 @@
 @{
-    ViewData["Title"] = "About";
+    ViewData["Title"] = "Dokumentation";
 }
-<h2>@ViewData["Title"].</h2>
-<h3>@ViewData["Message"]</h3>
+<header>
+    <div class="header-inner">
+        <div class="header-left">
+            <a href="/">&laquo; Tillbaka</a>
+        </div>
+        <h2>@ViewData["Title"]</h2>
+        <div class="header-right">
+            <span>Saknas n&aring;got?</span>
+            <a href="https://github.com/datasektionen/Docs" class="primary-action">GitHub</a>
+        </div>
+        <div class="clear"></div>
+    </div>
+</header>
+<div id="content">
+    <h2>@ViewData["Title"].</h2>
+    <h3>@ViewData["Message"]</h3>
 
-<p>Use this area to provide additional information.</p>
+    <p>Use this area to provide additional information.</p>
 
-@foreach (string s in "1,2,3".Split(','))
-{
-    @: s is equal to @s<br />
-}
+    <p>Example of @@foreach in ASP.NET 5 Razor:</p>
+
+    @foreach (string s in "1,2,3".Split(','))
+    {
+        @: s is equal to @s<br />
+    }
+</div>
