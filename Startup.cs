@@ -2,7 +2,7 @@ using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Docs
+namespace aurora
 {
     public class Startup
     {
@@ -18,7 +18,6 @@ namespace Docs
         {
             app.UseDeveloperExceptionPage();
             app.UseStaticFiles();
-
             app.UseMvc();
         }
 

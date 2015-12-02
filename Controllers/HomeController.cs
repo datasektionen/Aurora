@@ -1,6 +1,6 @@
 using Microsoft.AspNet.Mvc;
 
-namespace Docs.Controllers
+namespace aurora.Controllers
 {
     [Route("/")]
     public class HomeController : Controller
