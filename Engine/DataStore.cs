@@ -7,5 +7,6 @@ namespace aurora
 {
     public class DataStore
     {
+
     }
 }

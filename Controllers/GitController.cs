@@ -12,7 +12,15 @@ namespace aurora.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
-            return View();
+            return View("Backoffice");
+        }
+
+        [Route("Clone")]
+        public IActionResult Clone()
+        {
+            LibGit2Sharp.Repository.Clone("https://github.com/datasektionen/Docs.git", "repo");
+
+            return View("Backoffice");
         }
     }
 }
