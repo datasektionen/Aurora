@@ -18,3 +18,4 @@ artifacts/
 *.nupkg
 node_modules
 *.css
+repo*
