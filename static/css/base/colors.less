@@ -1,41 +1,29 @@
-﻿// Colors are applied
-// by using the appropriate color name as class
-// on the #application tag, and then use the theme-color
-// or theme-color-text on elements
+﻿.generate-color-scheme(
+    @lighten-5, @lighten-4, @lighten-3, @lighten-2, @lighten-1,
+    @theme-color, @darken-1, @darken-2, @darken-3, @darken-4, @btn-color
+) {
 
-#application.blue .theme-color.lighten-5	{ background: #e3f2fd; }
-#application.blue .theme-color.lighten-4	{ background: #bbdefb; }
-#application.blue .theme-color.lighten-3	{ background: #90caf9; }
-#application.blue .theme-color.lighten-2	{ background: #64b5f6; }
-#application.blue .theme-color.lighten-1	{ background: #42a5f5; }
-#application.blue .theme-color				{ background: #2196f3; }
-#application.blue .theme-color.darken-1		{ background: #1e88e5; }
-#application.blue .theme-color.darken-2		{ background: #1976d2; }
-#application.blue .theme-color.darken-3		{ background: #1565c0; }
-#application.blue .theme-color.darken-4		{ background: #0d47a1; }
-
-.blue {
-    .lighten-5  	    { background: #e3f2fd; }
-    .lighten-4  	    { background: #bbdefb; }
-    .lighten-3  	    { background: #90caf9; }
-    .lighten-2  	    { background: #64b5f6; }
-    .lighten-1  	    { background: #42a5f5; }
-    .theme-color        { background: #2196f3; }
-    .darken-1	        { background: #1e88e5; }
-    .darken-2	        { background: #1976d2; }
-    .darken-3	        { background: #1565c0; }
-    .darken-4	        { background: #0d47a1; }
-    .text-lighten-5  	{ color: #e3f2fd; }
-    .text-lighten-4  	{ color: #bbdefb; }
-    .text-lighten-3  	{ color: #90caf9; }
-    .text-lighten-2  	{ color: #64b5f6; }
-    .text-lighten-1  	{ color: #42a5f5; }
-    .text-theme-color   { color: #2196f3; }
-    .text-darken-1	    { color: #1e88e5; }
-    .text-darken-2	    { color: #1976d2; }
-    .text-darken-3	    { color: #1565c0; }
-    .text-darken-4	    { color: #0d47a1; }
-    .btn-color          { color: #fff; }
+    .lighten-5  	    { background: @lighten-5; }
+    .lighten-4  	    { background: @lighten-4; }
+    .lighten-3          { background: @lighten-3; }
+    .lighten-2          { background: @lighten-2; }
+    .lighten-1          { background: @lighten-1; }
+    .theme-color        { background: @theme-color; }
+    .darken-1           { background: @darken-1; }
+    .darken-2           { background: @darken-2; }
+    .darken-3           { background: @darken-3; }
+    .darken-4           { background: @darken-4; }
+    .text-lighten-5     { color: @lighten-5; }
+    .text-lighten-4     { color: @lighten-4; }
+    .text-lighten-3     { color: @lighten-3; }
+    .text-lighten-2     { color: @lighten-2; }
+    .text-lighten-1     { color: @lighten-1; }
+    .text-theme-color   { color: @theme-color; }
+    .text-darken-1      { color: @darken-1; }
+    .text-darken-2      { color: @darken-2; }
+    .text-darken-3      { color: @darken-3; }
+    .text-darken-4      { color: @darken-4; }
+    .btn-color          { color: @btn-color; }
 
     header {
         .lighten-1;
@@ -43,11 +31,9 @@
         a.primary-action { .darken-1; }
         h2 { .btn-color; }
         .header-right span { .text-lighten-5; }
-
-        @media (max-width: 991px) {
-                .header-left {
-                    .theme-color;
-                }
-            }
+        @media (max-width: 991px) { .header-left { .theme-color; }}
     }
+
+    .button.theme-color:hover { .lighten-2 !important; }
+
 }
