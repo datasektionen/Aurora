@@ -20,7 +20,6 @@ namespace aurora
             set
             {
                 _now = value;
-                _hasContent = true;
                 _repoFolder = "repo" + value.ToBinary().ToString();
             }
         }
@@ -29,7 +28,7 @@ namespace aurora
 
         public static string RepoFolder
         {
-            get { return "repo" + _now.ToBinary().ToString(); }
+            get { return (_now == null) ? null : "repo" + _now.ToBinary().ToString(); }
         }
     }
 }
