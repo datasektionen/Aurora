@@ -1,9 +1,11 @@
 ﻿@import "variables.less";
 @import "colors.less";
+@import "grid.less";
 @import url(https://fonts.googleapis.com/css?family=Lato:400,300,700,400italic,700italic);
 
 * {
   transition: all 0.5s;
+  box-sizing: border-box;
 }
 
 body {
@@ -20,15 +22,6 @@ a {
 
 .clear {
     clear: both;
-}
-
-#methone-pushdown {
-    box-shadow: 0 1px 8px rgba(0, 0, 0, .2);
-    position: relative;
-    z-index: 45;
-}
-#methone-pushdown {
-    height: 50px;
 }
 
 button, .button {
@@ -64,11 +57,6 @@ button, .button {
     text-align: center;
 }
 
-#methone-container-replace::shadow path {
-	fill: white;
-	stroke: white;
-}
-
 hr {
     border: none;
     border-top: 2px solid #eee;
@@ -76,6 +64,8 @@ hr {
 }
 
 #application {
+    padding-top: 50px;
+
     header {
         box-shadow: 0 1px 8px rgba(0, 0, 0, .2);
         position: relative;
@@ -85,8 +75,6 @@ hr {
             .contain-tight;
 
             .header-left, .header-right {
-                width: 25%;
-                float: left;
                 a { .button; margin-top: 30px; }
             }
 
@@ -107,8 +95,6 @@ hr {
                 margin: 0;
                 padding: 25px 0;
                 display: block;
-                width: 50%;
-                float: left;
                 font-size: 42px;
                 text-align: center;
             }

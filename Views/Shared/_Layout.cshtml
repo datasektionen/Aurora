@@ -10,6 +10,7 @@
             target_id: "methone-container-replace",
             primary_color: "#2196f3",
             secondary_color: "white",
+            delta_invert: true,
             topbar_items: [
               {
                 str: "Dokumentation",
@@ -34,7 +35,6 @@
     </head>
     <body>
         <div id="methone-container-replace"></div>
-        <div id="methone-pushdown"></div>
 
         @{await FlushAsync(); }
         <div id="application" class="blue">
