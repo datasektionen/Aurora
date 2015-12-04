@@ -5,13 +5,17 @@
 
 <header>
     <div class="header-inner">
-        <div class="header-left">
-            <a href="/">&laquo; Till dokumentationen</a>
-        </div>
-        <h2>@ViewData["Title"]</h2>
-        <div class="header-right">
-            <span>Ändringar?</span>
-            <a href="/Backoffice/Clone" class="primary-action">Klona från GitHub</a>
+        <div class="row">
+            <div class="header-left col-md-4">
+                <a href="/">&laquo; Till dokumentationen</a>
+            </div>
+            <div class="col-md-4">
+                <h2>@ViewData["Title"]</h2>
+            </div>
+            <div class="header-right col-md-4">
+                <span>Ändringar?</span>
+                <a href="/Backoffice/Clone" class="primary-action">Klona från GitHub</a>
+            </div>
         </div>
         <div class="clear"></div>
     </div>
