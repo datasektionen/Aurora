@@ -31,8 +31,11 @@ button, .button {
     padding-left: 20px;
     padding-bottom: 8px;
     padding-right: 20px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+
     &.subtle, .subtle {
         font-weight: 300;
+        box-shadow: none;
     }
     &.primary-action, .primary-action {
         font-weight: 700;
@@ -72,13 +75,24 @@ hr {
         z-index: 20;
 
         .header-inner {
+            padding: 0 15px;
             .contain-tight;
 
-            .header-left, .header-right {
-                a { .button; margin-top: 30px; }
+            .header-left, .header-right { a { .button; margin-top: 30px; } }
+            .header-left a { .button.subtle; }
+
+            @media (max-width: 991px) {
+                .header-right { display: none; }
+                .header-left a {
+                    display: block;
+                    padding: 12px 20px;
+                    font-size: 14px;
+                    text-transform: uppercase;
+                    font-weight: bold;
+                    margin-top: 0;
+                }
             }
 
-            .header-left a { .button.subtle; }
             .header-right {
                 float: right;
                 .align-right;
@@ -102,7 +116,7 @@ hr {
     }
 
     #content {
-        .contain-tight;
+        .contain;
         padding: 40px 50px;
         background: #fff;
     }
