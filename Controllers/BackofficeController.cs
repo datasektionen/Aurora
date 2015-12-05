@@ -5,6 +5,10 @@ using System.IO;
 
 namespace aurora.Controllers
 {
+    /// <summary>
+    /// Handles Backoffice, the documentation system's administration panel.
+    /// Provides the ability to update content from Git, and view system status.
+    /// </summary>
     [Route("/Backoffice/")]
     public class BackofficeController : Controller
     {
@@ -83,7 +87,7 @@ namespace aurora.Controllers
                     }
                     // Or append it with sub-documents
                     else
-                        doc.Children.Add(new Document(title, slug, content));
+                        doc.Children.Add(new Document(slug, title, content));
                 }
 
                 // Add folder/top level documents as children of the root document
