@@ -14,7 +14,7 @@
             </div>
             <div class="header-right col-md-4">
                 <span>Ändringar?</span>
-                <a href="/Backoffice/Clone" class="primary-action">Klona från GitHub</a>
+                <a href="/Backoffice/Update" class="primary-action">Klona från GitHub</a>
             </div>
         </div>
         <div class="clear"></div>
@@ -40,13 +40,10 @@
     <ul>
     @foreach (System.IO.DirectoryInfo d in ViewData["Repos"] as IEnumerable<System.IO.DirectoryInfo>)
     {
-        if (d.Name.StartsWith("repo-"))
-        {
-            @: <li><code>@d (@d.GetFiles().Length fil(er), @d.GetDirectories().Length mapp(ar))</code></li>
-        }
+        @: <li><code>@d (@d.GetFiles().Length fil(er), @d.GetDirectories().Length mapp(ar))</code></li>
     }
     </ul>
-    <a href="/Backoffice/Clone" class="button theme-color btn-color">Klona från GitHub</a>
+    <a href="/Backoffice/Update" class="button theme-color btn-color">Uppdatera dokumentation</a>
     <hr />
     <h2>Dokument-status</h2>
     <p>

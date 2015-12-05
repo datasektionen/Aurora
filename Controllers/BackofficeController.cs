@@ -12,7 +12,11 @@ namespace aurora.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
-            var root = new DirectoryInfo(Directory.GetCurrentDirectory() + "/repos");
+            var dir = Directory.GetCurrentDirectory() + "/repos";
+            if (!Directory.Exists(dir))
+                Directory.CreateDirectory(dir);
+
+            var root = new DirectoryInfo(dir);
             ViewData["Title"] = "Backoffice";
             ViewData["RepoFolder"] = Engine.RepoFolder;
             ViewData["RepoURL"] = Engine.RepoURL;
@@ -25,9 +29,9 @@ namespace aurora.Controllers
         }
 
         [Route("Update")]
-        public async void Clone()
+        public async Task<ActionResult> Clone()
         {
-            var repo = "repos/" + DateTime.Now.ToString("YYYYMMddhhmmss");
+            var repo = "repos/" + DateTime.Now.ToString("yyyyMMddhhmmss");
             await Task.Factory.StartNew(() => LibGit2Sharp.Repository.Clone(Engine.RepoURL, repo));
 
             var folder = new DirectoryInfo(repo);
@@ -37,6 +41,10 @@ namespace aurora.Controllers
             // For all directories
             foreach (var d in folder.GetDirectories())
             {
+                // Skip git folder
+                if (d.Name.Equals(".git"))
+                    continue;
+
                 // Create a root document
                 var slug = Regex.Replace(d.Name, "[^A-Za-z0-9-]", "").ToLower();
                 var doc = new Document(d.Name, slug);
@@ -61,8 +69,7 @@ namespace aurora.Controllers
                 Engine.RootDoc.Children.Add(doc);
             }
 
-
-            Response.Redirect("/Backoffice/");
+            return Redirect("/Backoffice/");
         }
 
         [Route("Read")]
