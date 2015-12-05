@@ -22,11 +22,22 @@
     <div class="row">
         <div class="col-sm-4 col-md-3">
             <div class="secondary-nav">
-                <h3>@ViewData["ParentTitle"]</h3>
+                <h3><a href="@ViewData["Path"]">@ViewData["ParentTitle"]</a></h3>
                 <ul>
                     @foreach (aurora.Document doc in ViewData["Children"] as IEnumerable<aurora.Document>)
                     {
-                        <li><a href="@ViewData["Path"]/@doc.Slug/">@doc.Title</a></li>
+                        if (ViewData["Slug"].Equals(doc.Slug))
+                        {
+                            <li>
+                                <a class="text-theme-color" href="@ViewData["Path"]/@doc.Slug/">
+                                    <strong>@doc.Title</strong>
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li><a href="@ViewData["Path"]/@doc.Slug/">@doc.Title</a></li>
+                        }
                     }
                 </ul>
             </div>
