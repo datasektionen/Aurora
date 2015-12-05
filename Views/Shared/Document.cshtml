@@ -21,7 +21,7 @@
 <div id="content">
     <div class="row">
         <div class="col-sm-4 col-md-3">
-            <div class="secondary-nav">
+            <div id="secondary-nav">
                 <h3><a href="@ViewData["Path"]">@ViewData["ParentTitle"]</a></h3>
                 <ul>
                     @foreach (aurora.Document doc in ViewData["Children"] as IEnumerable<aurora.Document>)

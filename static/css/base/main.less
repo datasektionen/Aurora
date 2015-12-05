@@ -4,7 +4,7 @@
 @import "variables.less";
 @import "generators.less";
 @import "grid.less";
-@import url(https://fonts.googleapis.com/css?family=Lato:400,300,700,400italic,700italic);
+@import url(https://fonts.googleapis.com/css?family=Lato:400,300,700,400italic,700italic,900);
 
 * {
   transition: all 0.25s;
@@ -135,5 +135,32 @@ hr {
         h2 { font-size: 20px; color: @body_text_color; margin: 10px 0; padding: 0; }
         p, ul, ol { font-size: 16px; line-height: 1.6; color: @body_text_color; }
         code { color: #696969; background: @light; border: 1px solid #f0f0f0; padding: 10px; font-size: 15px; display: block; }
+
+        #secondary-nav {
+            h3 {
+                display: block;
+                background: @light;
+                text-transform: uppercase;
+                color: @text_color;
+                font-size: 16px;
+                padding: 6px;
+                text-align: center;
+                font-weight: 700;
+                margin: 8px 0;
+            }
+            ul {
+                margin: 0;
+                padding: 0;
+                list-style-type: none;
+
+                li a {
+                    display: block;
+                    padding: 5px 1px;
+                    padding-top: 6px;
+                    font-size: 15px;
+                    border-bottom: 1px solid #eee;
+                }
+            }
+        }
     }
 }
