@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace aurora
 {
     public class Document
     {
         public string Slug { get; private set; }
-        public string Title { get; private set; }
+        public string Title { get; set; }
         public string Body { get; set; }
         public List<Document> Children { get; private set; }
 
