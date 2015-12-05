@@ -9,14 +9,13 @@ namespace aurora
         public string Body { get; set; }
         public List<Document> Children { get; private set; }
 
-        public Document(string Title, string Slug)
+        public Document(string Slug)
         {
-            this.Title = Title;
             this.Slug = Slug;
             Children = new List<Document>();
         }
 
-        public Document(string Title, string Slug, string Body)
+        public Document(string Slug, string Title, string Body)
         {
             this.Title = Title;
             this.Body = Body;
