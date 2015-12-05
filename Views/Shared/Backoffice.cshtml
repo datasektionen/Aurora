@@ -27,13 +27,6 @@
         <strong>@ViewData["ServerStartTime"]</strong>
         (uptime på @ViewData["ServerUpTime"])
     </p>
-    <p>Senaste kloning från GitHub gjordes @ViewData["Now"]</p>
-    <p>
-        <em>
-            Om ovanstående datum är 1 jan 0001 beror detta på att
-            senaste <code>git clone</code> gjordes innan serverns start.
-        </em>
-    </p>
     <hr />
     <h2>Git-status</h2>
     <p>Följande kloner av repositoryt <code>@ViewData["RepoURL"]</code> finns på servern:</p>
@@ -57,31 +50,35 @@
         }
     </p>
     <ul>
-        @{ 
-            var root = (aurora.Document) ViewData["RootDoc"];
-            foreach (var childDoc in root.Children as IEnumerable<aurora.Document>)
-            {
-                @:<li>
-                @:  <code>@childDoc.Slug: @childDoc.Title</code>
+        <li>
+            @{ 
+                var root = (aurora.Document) ViewData["RootDoc"];
 
-                if (childDoc.Children != null && childDoc.Children.Count > 0)
+                @: <code>@root.Slug:</code> <strong>@root.Title</strong>
+                @: <em>(@root.Body.Length tecken)</em>
+                @: <ul>
+
+                foreach (var childDoc in root.Children as IEnumerable<aurora.Document>)
                 {
-                    foreach (var childChildDoc in childDoc.Children as IEnumerable<aurora.Document>)
-                    {
-                        @: <ul>
-                        @:   <li>
-                        @:     <code>@childChildDoc.Slug: @childChildDoc.Title @childChildDoc.Body</code>
-                        @:   </li>
-                        @: </ul>
-                    }
-                }
-                @:</li>
-            }
-        }
-    </ul>
+                    @:<li>
+                    @:  <code>@childDoc.Slug: @childDoc.Title</code>
 
-    @root.Title
-    @root.Slug
-    @root.Children.Count
-    @root.Body
+                    if (childDoc.Children != null && childDoc.Children.Count > 0)
+                    {
+                        foreach (var childChildDoc in childDoc.Children as IEnumerable<aurora.Document>)
+                        {
+                            @: <ul>
+                            @:   <li>
+                            @:     <code>@childChildDoc.Slug:</code> <strong>@childChildDoc.Title</strong>
+                            @:     <em>(@childChildDoc.Body.Length tecken)</em>
+                            @:   </li>
+                            @: </ul>
+                        }
+                    }
+                    @:</li>
+                }
+            }
+            </ul>
+        </li>
+    </ul>
 </div>
