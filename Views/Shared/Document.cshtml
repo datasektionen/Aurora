@@ -21,12 +21,15 @@
 <div id="content">
     <div class="row">
         <div class="col-sm-4 col-md-3">
-            <ul>
-                @foreach (aurora.Document doc in ViewData["Children"] as IEnumerable<aurora.Document>)
-                {
-                    <li><a href="@ViewData["Slug"]/@doc.Slug/">@doc.Title</a></li>
-                }
-            </ul>
+            <div class="secondary-nav">
+                <h3>@ViewData["ParentTitle"]</h3>
+                <ul>
+                    @foreach (aurora.Document doc in ViewData["Children"] as IEnumerable<aurora.Document>)
+                    {
+                        <li><a href="@ViewData["Path"]/@doc.Slug/">@doc.Title</a></li>
+                    }
+                </ul>
+            </div>
         </div>
         <div class="col-sm-8 col-md-9">
             @Html.Raw(ViewData["Body"])
