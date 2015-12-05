@@ -1,0 +1,36 @@
+<header>
+    <div class="header-inner">
+        <div class="row">
+            <div class="header-left col-md-2">
+                @if(!(bool) ViewData["IsRoot"])
+                {
+                    <a href="/">&laquo; Tillbaka</a>
+                }
+            </div>
+            <div class="col-md-8">
+                <h2>@ViewData["Title"]</h2>
+            </div>
+            <div class="header-right col-md-2">
+                <span>Se p&aring;</span>
+                <a href="https://github.com/datasektionen/Docs" class="primary-action">GitHub</a>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</header>
+<div id="content">
+    <div class="row">
+        <div class="col-sm-4 col-md-3">
+            <ul>
+                @foreach (aurora.Document doc in ViewData["Children"] as IEnumerable<aurora.Document>)
+                {
+                    <li><a href="@ViewData["Slug"]/@doc.Slug/">@doc.Title</a></li>
+                }
+            </ul>
+        </div>
+        <div class="col-sm-8 col-md-9">
+            @Html.Raw(ViewData["Body"])
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
