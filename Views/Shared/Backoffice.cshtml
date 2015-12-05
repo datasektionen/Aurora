@@ -47,7 +47,7 @@
     <hr />
     <h2>Dokument-status</h2>
     <p>
-        @if (ViewData["RootDoc"] != null)
+        @if (((aurora.Document) ViewData["RootDoc"]).Children.Count > 0)
         {
             @: Servern rapporterar att det finns behandlat innehåll.
         }
@@ -56,8 +56,6 @@
             @: Servern rapporterar att inget dokument-träd ännu har blivit parsat.
         }
     </p>
-    <a href="/Backoffice/Read" class="button theme-color btn-color">Läs Git-repot till minnet</a>
-
     <ul>
         @{ 
             var root = (aurora.Document) ViewData["RootDoc"];
