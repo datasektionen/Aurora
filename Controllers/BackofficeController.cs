@@ -9,39 +9,48 @@ namespace aurora.Controllers
     [Route("/Backoffice/")]
     public class BackofficeController : Controller
     {
-        // GET: /<controller>/
+        /// <summary>
+        /// Display the back office dashboard, i.e. system status page
+        /// </summary>
         public IActionResult Index()
         {
+            // Our working directory is always ./repos
             var dir = Directory.GetCurrentDirectory() + "/repos";
+
+            // Make sure the /repos folder exists
             if (!Directory.Exists(dir))
                 Directory.CreateDirectory(dir);
 
-            var root = new DirectoryInfo(dir);
+            // Assign view data and render it
             ViewData["Title"] = "Backoffice";
-            ViewData["RepoFolder"] = Engine.RepoFolder;
-            ViewData["RepoURL"] = Engine.RepoURL;
-            ViewData["Now"] = Engine.Now;
-            ViewData["HasContent"] = Engine.HasContent;
-            ViewData["Repos"] = root.GetDirectories();
-            ViewData["RootDoc"] = Engine.RootDoc;
+            ViewData["RepoURL"] = Data.RepoURL;
+            ViewData["Repos"] = new DirectoryInfo(dir).GetDirectories();
+            ViewData["RootDoc"] = Data.RootDoc;
 
             return View("Backoffice");
         }
 
+        /// <summary>
+        /// Flush the current document tree (if existent), and run git clone to
+        /// get the latest data. Parse it to a document tree with HTML content.
+        /// </summary>
         [Route("Update")]
         public async Task<ActionResult> Clone()
         {
+            // Repository folders are named after the current time
             var repo = "repos/" + DateTime.Now.ToString("yyyyMMddhhmmss");
-            await Task.Factory.StartNew(() => LibGit2Sharp.Repository.Clone(Engine.RepoURL, repo));
 
+            // Run a git clone as an asynchronous operation and list its contents
+            await Task.Factory.StartNew(() => LibGit2Sharp.Repository.Clone(Data.RepoURL, repo));
             var folder = new DirectoryInfo(repo);
 
-            Engine.RootDoc = new Document("Dokumentation", "docs");
+            // Once git clone is done, flush the document tree
+            Data.RootDoc = new Document("Dokumentation", "docs");
 
-            // For all directories
+            // For all directories in the repository folder
             foreach (var d in folder.GetDirectories())
             {
-                // Skip git folder
+                // Skip the .git folder
                 if (d.Name.Equals(".git"))
                     continue;
 
@@ -79,7 +88,7 @@ namespace aurora.Controllers
                     }
                 }
 
-                Engine.RootDoc.Children.Add(doc);
+                Data.RootDoc.Children.Add(doc);
             }
 
             return Redirect("/Backoffice/");
