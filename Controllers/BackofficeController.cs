@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
 using System.IO;
-using System.Text.RegularExpressions;
 
 namespace aurora.Controllers
 {
@@ -44,8 +43,12 @@ namespace aurora.Controllers
             await Task.Factory.StartNew(() => LibGit2Sharp.Repository.Clone(Data.RepoURL, repo));
             var folder = new DirectoryInfo(repo);
 
-            // Once git clone is done, flush the document tree
-            Data.RootDoc = new Document("Dokumentation", "docs");
+            // Get index.md, the root node of the documentation tree
+            var index = new StreamReader(repo + "/index.md").ReadToEnd();
+            index = CommonMark.CommonMarkConverter.Convert(index);
+
+            // Flush the document tree, replacing it with the root node to build upon
+            Data.RootDoc = new Document("docs", Util.GetTitle(index), index);
 
             // For all directories in the repository folder
             foreach (var d in folder.GetDirectories())
@@ -54,26 +57,23 @@ namespace aurora.Controllers
                 if (d.Name.Equals(".git"))
                     continue;
 
-                // Create a root document
-                var slug = Regex.Replace(d.Name, "[^A-Za-z0-9-]", "").ToLower();
-                var doc = new Document(d.Name, slug);
+                // Create a root document for this folder
+                var slug = Util.Slugify(d.Name);
+                var doc = new Document(slug);
                 var children = doc.Children;
 
+                // Parse through the documentation section's files
                 foreach (var f in d.GetFiles())
                 {
-                    slug = f.Name.
-                        ToLower().
-                        Replace(".md", "").
-                        Replace(".mdown", "").
-                        Replace(".markdown", "");
-                    slug = Regex.Replace(slug, "[^A-Za-z0-9-]", "");
-
+                    // Fetch file contents
                     var content = new StreamReader(f.FullName).ReadToEnd();
+
+                    // Slugify the document file name, and convert body to HTML
+                    slug = Util.Slugify(f.Name);
                     content = CommonMark.CommonMarkConverter.Convert(content);
 
-                    var start = content.IndexOf("<h1>");
-                    var end = content.IndexOf("</h1>");
-                    var title = content.Substring(start + 4, end - start);
+                    // Grab the document's actual title
+                    var title = Util.GetTitle(content);
 
                     // Fill the root docuement
                     if (f.Name.ToLower().Equals("index.md"))
@@ -83,14 +83,14 @@ namespace aurora.Controllers
                     }
                     // Or append it with sub-documents
                     else
-                    {
                         doc.Children.Add(new Document(title, slug, content));
-                    }
                 }
 
+                // Add folder/top level documents as children of the root document
                 Data.RootDoc.Children.Add(doc);
             }
 
+            // Once document refresh is done, display status page
             return Redirect("/Backoffice/");
         }
     }
