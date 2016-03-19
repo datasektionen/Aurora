@@ -1,5 +1,5 @@
 // Require libs and set up port
-var http = require('http'), fs = require('fs');
+var http = require('http'), fs = require('fs'), gruntfile = require('./gruntfile'), grunt = require('grunt');
 const PORT = process.env.PORT || 8000;
 
 // Handle requests
@@ -13,4 +13,7 @@ function handleRequest(req, res) {
 }
 
 // Start server
-http.createServer(handleRequest).listen(PORT, () => console.log("Server listening on: http://localhost:%s", PORT));
+gruntfile(grunt);
+grunt.tasks(['default'], {}, () =>
+    http.createServer(handleRequest).listen(PORT, () => console.log("Server listening on port %s", PORT))
+);
