@@ -3,8 +3,15 @@
   padding: 40px 50px;
   background: #fff;
 
-  h1 { font-size: 32px; margin: 10px 0; padding: 0 0 10px; border-bottom: 1px solid #f3f3f3; }
-  h2 { font-size: 20px; color: @body_text_color; margin: 25px 0 10px; padding: 0 0 10px; border-bottom: 1px solid #f7f7f7; }
+  h1 { font-size: 35px; font-weight: 900; margin: 10px 0; padding: 0 0 10px; border-bottom: 2px solid #f0f0f0; }
+  h2 {
+    font-size: 22px;
+    font-weight: 900;
+    color: @body_text_color;
+    margin: 30px 0 15px;
+    padding: 0 0 10px;
+    border-bottom: 1px solid #f7f7f7;
+  }
   p, ul, ol { font-size: 16px; line-height: 1.6; color: @body_text_color; }
   code { color: #696969; background: @light; border: 1px solid #f0f0f0; padding: 3px; font-size: 14px; }
   pre code {
@@ -18,12 +25,12 @@
       display: block;
       background: @light;
       text-transform: uppercase;
-      color: @text_color;
       font-size: 16px;
       padding: 6px;
       text-align: center;
       font-weight: 700;
       margin: 8px 0;
+      a { color: @text_color; }
     }
     ul {
       margin: 0;
@@ -36,6 +43,7 @@
         padding-top: 6px;
         font-size: 15px;
         border-bottom: 1px solid #eee;
+        color: @text_color;
       }
     }
   }
