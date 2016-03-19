@@ -1,0 +1,47 @@
+/* header.less */
+
+header {
+  box-shadow: 0 1px 8px rgba(0, 0, 0, .2);
+  position: relative;
+  z-index: 20;
+
+  .header-inner {
+    padding: 0 15px;
+    .contain-tight;
+
+    .header-left, .header-right { a { .button; margin-top: 30px; } }
+    .header-left a { .button.subtle; }
+
+    @media (max-width: 991px) {
+      .header-right { display: none; }
+      .header-left a {
+        display: block;
+        padding: 12px 20px;
+        font-size: 14px;
+        text-transform: uppercase;
+        font-weight: bold;
+        margin-top: 0;
+      }
+    }
+
+    .header-right {
+      float: right;
+      .align-right;
+      a.button { .button.primary-action; }
+      span {
+        font-weight: 300;
+        font-size: 15px;
+        display: inline-block;
+        padding: 2px 10px;
+      }
+    }
+
+    h2 {
+      margin: 0;
+      padding: 25px 0;
+      display: block;
+      font-size: 42px;
+      text-align: center;
+    }
+  }
+}
