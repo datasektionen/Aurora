@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "dependencies": {
     "grunt": "^0.4.5",
-    "grunt-contrib-less": "^1.1.0",
+    "grunt-contrib-less": "^1.1.0"
   },
   "repository": {
     "url": "https://github.com/datasektionen/Aurora.git"
