@@ -8,12 +8,12 @@ module.exports = function (grunt) {
                     paths: ["static/css"]
                 },
                 files: {
-                    "static/css/compiled.css": "static/css/import.less"
+                    "css/compiled.css": "css/import.less"
                 }
             }
         },
         watch: {
-            files: ['static/css/**/*.less'],
+            files: ['css/**/*.less'],
             tasks: ['less']
         }
     });
