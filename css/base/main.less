@@ -131,8 +131,8 @@ hr {
         padding: 40px 50px;
         background: #fff;
 
-        h1 { font-size: 32px; margin: 10px 0; padding: 0; }
-        h2 { font-size: 20px; color: @body_text_color; margin: 10px 0; padding: 0; }
+        h1 { font-size: 32px; margin: 10px 0; padding: 0 0 10px; border-bottom: 1px solid #f3f3f3; }
+        h2 { font-size: 20px; color: @body_text_color; margin: 25px 0 10px; padding: 0 0 10px; border-bottom: 1px solid #f7f7f7; }
         p, ul, ol { font-size: 16px; line-height: 1.6; color: @body_text_color; }
         code { color: #696969; background: @light; border: 1px solid #f0f0f0; padding: 3px; font-size: 14px; }
         pre code {
@@ -166,6 +166,13 @@ hr {
                     border-bottom: 1px solid #eee;
                 }
             }
+        }
+
+        #sidebar {
+            background: @ultra_light;
+            h2 { font-size: 1em; }
+            ul, ol, p { font-size: 0.9em; }
+            h2, ul, ol, p { color: lighten(@body_text_color, 15); }
         }
     }
 }
