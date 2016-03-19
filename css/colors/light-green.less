@@ -1,0 +1,16 @@
+// Colors are applied
+// by using the appropriate color name as class
+// on the #application tag, and then use the theme-color
+// or theme-color-text on elements
+
+@import "../colors/_color-scheme.less";
+
+.light-green {
+  @lighten-5: #f1f8e9; @lighten-4: #dcedc8; @lighten-3: #c5e1a5; @lighten-2: #aed581;
+  @lighten-1: #9ccc65; @theme-color: #8bc34a; @darken-1: #7cb342; @darken-2: #689f38;
+  @darken-3: #558b2f; @darken-4: #33691e; @btn-color: #fff;
+  .generate-color-scheme(
+          @lighten-5, @lighten-4, @lighten-3, @lighten-2, @lighten-1,
+          @theme-color, @darken-1, @darken-2, @darken-3, @darken-4, @btn-color
+  );
+}
