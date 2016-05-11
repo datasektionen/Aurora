@@ -9,7 +9,7 @@ header {
     padding: 0 15px;
     .contain-tight;
 
-    .header-left, .header-right { a { .button; margin-top: 30px; } }
+    .header-left, .header-right { a, input, button { .button; margin-top: 30px; } }
     .header-left a { .button.subtle; }
 
     @media (max-width: 991px) {
@@ -27,7 +27,7 @@ header {
     .header-right {
       float: right;
       .align-right;
-      a.button { .button.primary-action; }
+      a.button, input.primary-action, button.primary-action { .button.primary-action; }
       span {
         font-weight: 300;
         font-size: 15px;
