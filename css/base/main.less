@@ -2,12 +2,15 @@
 // Under development, will be cleaned up and packaged later on
 
 @import "variables.less";
-@import "grid.less";
 @import url(https://fonts.googleapis.com/css?family=Lato:400,300,700,400italic,700italic,900);
+@import url(https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css);
+@import url(https://opensource.keycdn.com/fontawesome/4.6.3/font-awesome.min.css);
 
 * {
-  transition: all 0.25s;
-  box-sizing: border-box;
+    transition: all 0.25s ease-in;
+    &:focus {
+        outline: none;
+    }
 }
 
 body {
@@ -81,4 +84,12 @@ hr {
 
 #application {
     padding-top: 50px;
+}
+
+.light {
+    background: @light;
+}
+
+.ultra_light {
+    background: @ultra_light;
 }
