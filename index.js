@@ -8,8 +8,11 @@ function handleRequest(req, res) {
         res.end(fs.readFileSync('test/styrdok.html'));
     else if (req.url === '/test/tech')
         res.end(fs.readFileSync('test/tech.html'));
-    else
+    else {
+        res.set('Content-Type', 'text/css');
+        res.header('Content-Type', 'text/css');
         res.end(fs.readFileSync('css/compiled.css'));
+    }
 }
 
 // Start server

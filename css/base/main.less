@@ -22,7 +22,9 @@ body {
 
 a {
     color: @body_text_color;
-    text-decoration: none;
+    &, &:hover {
+        text-decoration: none !important;
+    }
 }
 
 .clear {
