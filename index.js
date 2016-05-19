@@ -10,7 +10,7 @@ function handleRequest(req, res) {
         res.end(fs.readFileSync('test/tech.html'));
     else {
         // res.set('Content-Type', 'text/css');
-        res.header('Content-Type', 'text/css');
+        // res.header('Content-Type', 'text/css');
         res.end(fs.readFileSync('css/compiled.css'));
     }
 }
