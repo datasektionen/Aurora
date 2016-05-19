@@ -9,7 +9,7 @@ function handleRequest(req, res) {
     else if (req.url === '/test/tech')
         res.end(fs.readFileSync('test/tech.html'));
     else {
-        res.set('Content-Type', 'text/css');
+        // res.set('Content-Type', 'text/css');
         res.header('Content-Type', 'text/css');
         res.end(fs.readFileSync('css/compiled.css'));
     }
