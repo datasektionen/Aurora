@@ -1,0 +1,16 @@
+// Colors are applied
+// by using the appropriate color name as class
+// on the #application tag, and then use the theme-color
+// or theme-color-text on elements
+
+@import "../colors/_color-scheme.less";
+
+.money-green {
+  @lighten-5: #46c756; @lighten-4: #39bb49; @lighten-3: #33a741; @lighten-2: #2d9339;
+  @lighten-1: #278032; @theme-color: #216C2A; @darken-1: #1b5822; @darken-2: #15451b;
+  @darken-3: #0f3113; @darken-4: #091d0b; @btn-color: #fff;
+  .generate-color-scheme(
+          @lighten-5, @lighten-4, @lighten-3, @lighten-2, @lighten-1,
+          @theme-color, @darken-1, @darken-2, @darken-3, @darken-4, @btn-color
+  );
+}
