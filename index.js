@@ -4,7 +4,17 @@ const PORT = process.env.PORT || 8000;
 
 // Handle requests
 function handleRequest(req, res) {
-    if (req.url === '/test/styrdok')
+	if (req.url === '/api/colors') {
+		fs.readdir('./css/colors', (err, files) => {
+			if (err) {
+				res.end('{}')
+			} else {
+				let f = files.filter(x => x !== '_color-scheme.less').map(x => x.replace('.less', ''))
+				res.end(JSON.stringify(f))
+			}
+		})
+    } 
+    else if (req.url === '/test/styrdok')
         res.end(fs.readFileSync('test/styrdok.html'));
     else if (req.url === '/test/tech')
         res.end(fs.readFileSync('test/tech.html'));
