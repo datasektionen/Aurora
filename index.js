@@ -5,6 +5,10 @@ const PORT = process.env.PORT || 8000;
 // Handle requests
 function handleRequest(req, res) {
 	if (req.url === '/api/colors') {
+		res.setHeader('Access-Control-Allow-Origin', '*');
+		res.setHeader('Access-Control-Request-Method', '*');
+		res.setHeader('Access-Control-Allow-Methods', '*');
+		res.setHeader('Access-Control-Allow-Headers', '*');
 		fs.readdir('./css/colors', (err, files) => {
 			if (err) {
 				res.end('{}')
