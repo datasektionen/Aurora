@@ -17,8 +17,10 @@ function handleRequest(req, res) {
 				res.end(JSON.stringify(f))
 			}
 		})
-    } 
-    else if (req.url === '/test/styrdok')
+    } else if (req.url === '/js') {
+        res.setHeader('Content-Type', 'text/javascript');
+        res.end(fs.readFileSync('js/script.js'));
+    } else if (req.url === '/test/styrdok')
         res.end(fs.readFileSync('test/styrdok.html'));
     else if (req.url === '/test/tech')
         res.end(fs.readFileSync('test/tech.html'));

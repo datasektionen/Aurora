@@ -1,12 +1,19 @@
 #content table {
   font-size: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  border: 1px solid #eee;
+  border-radius: 2px;
 
-  border: 1px solid @light;
-
-  tbody tr:nth-child(odd) {
-    background: @light;
+  tr { border-bottom: 1px solid #dfdfdf; }
+  tr:hover td, tr:hover th { background: @light; }
+  tfoot tr:hover td { background: #fff; }
+  tfoot { border-top: 3px solid #ddd; font-weight: bold; }
+  thead th { padding: 13px; color: #333; background: #fff; }
+  td { padding: 13px; color: lighten(@body_text_color, 15); text-align: left; background: #fff; }
+  td.right, th.right {
+  	text-align: right;
   }
-
-  thead th { padding: 10px; }
-  td { padding: 10px; color: lighten(@body_text_color, 15); text-align: left; }
+  td.no-wrap, th.no-wrap {
+  	white-space: nowrap;
+  }
 }

@@ -1,317 +1,284 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Taitan - Datasektionen Docs</title>
-        <link rel="stylesheet" href="/css/compiled.css" />
-        <script type="text/javascript">
-          window.tbaas_conf = {
-            system_name: "aurora",
-            target_id: "methone-container-replace",
-            primary_color: "#2196f3",
-            secondary_color: "white",
-			bar_color: "#1e88e5",
-            delta_invert: true,
-            topbar_items: [
-              {
-                str: "Dokumentation",
-                href: "/"
-              },
-              {
-                  str: "Kom igång",
-                  href: "/kom-igang/"
-              },
-              {
-                  str: "API:er",
-                  href: "/api-er/"
-              },
-              {
-                  str: "User Interface",
-                  href: "/ui/"
-              }
-            ]
-          }
-        </script>
-        <script async src="http://methone.datasektionen.se"></script>
-    </head>
-    <body>
-        <div id="methone-container-replace"></div>
-        <div id="application" class="blue">
-            <header>
-			    <div class="header-inner">
-			        <div class="row">
-			            <div class="header-left col-md-2">
-			                <a href="/">&laquo; Tillbaka</a>
-			            </div>
-			            <div class="col-md-8">
-			                <h2>Taitan</h2>
-			            </div>
-			            <div class="header-right col-md-2">
-			                <span class="visible-lg-inline">Se p&aring;</span>
-			                <a href="https://github.com/datasektionen/Docs" class="primary-action">GitHub</a>
-			            </div>
-			        </div>
-			        <div class="clear"></div>
-			    </div>
-			</header>
-			<div id="content">
-				
-				    <div class="row">
-				        <div class="col-sm-4 col-md-3">
-				            <div id="secondary-nav">
-				            	
-					                <h3><a href="#">Taitan</a></h3>
-					                <ul>
-										
-					                    	<li><a href="/api-er">API:er och system</a></li>
-											
-												<ul>
-													
-														<li><a href="/api-er/methone">Methone</a></li>
-													
-														<li><a href="/api-er/taitan">Taitan</a></li>
-													
-												</ul>
-											
-										
-					                </ul>
-					            
-				            </div>
-				        </div>
-				        <div class="col-sm-8 col-md-9">
-				        	<div class="row">
-				        		<div class="col-md-9">
-				            		<h1 id="taitan">Taitan (system)</h1>
+<head>
+    <meta charset="utf-8" />
+    <title>Taitan - Datasektionen Docs</title>
+    <link rel="stylesheet" href="/css/compiled.css" />
+</head>
+<body>
+    <div id="methone-container-replace"></div>
+    <div id="application" class="blue">
+        <header>
+            <div class="header-inner">
+            <a href="" class="floating-action-button theme-color"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                <div class="clear"></div>
+            </div>
+        </header>
+        <div id="content">
 
-<p>Taitan är det system som tar hand om &quot;översättningen&quot; från Markdown-dokument
-som ligger på GitHub, till ett HTTP RESTful JSON API som går att hämta data från.</p>
+            <div class="row">
+                <div id="secondary-nav">
+                    <h3><a href="#">Taitan</a></h3>
+                    <ul>
+                        <li><a href="/api-er">API:er och system</a></li>
+                        <li><a href="/api-er/methone">Methone</a></li>
+                        <li><a href="/api-er/taitan">Taitan</a></li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h1 id="taitan">Taitan</h1>
 
-<p>Taitan tar hand om att:</p>
+                    <p>Taitan är det system som tar hand om &quot;översättningen&quot; från Markdown-dokument
+                    som ligger på GitHub, till ett HTTP RESTful JSON API som går att hämta data från.</p>
 
-<ol>
-<li>Läsa uppdaterat källmaterial från GitHub (se Installation och konfiguration nedan)</li>
-<li>Konvertera den Markdown som dokumenten skrivs i till HTML-kod</li>
-<li>Kombinera alla filer (body.md, sidebar.md, meta.toml) för varje dokument</li>
-<li>Skicka all dokument- och metadata som JSON vid request</li>
-</ol>
+                    <p>Taitan tar hand om att:</p>
+                        <ol>
+                            <li>Läsa uppdaterat källmaterial från GitHub (se Installation och konfiguration nedan)</li>
+                            <li>Konvertera den Markdown som dokumenten skrivs i till HTML-kod</li>
+                            <li>Kombinera alla filer (body.md, sidebar.md, meta.toml) för varje dokument</li>
+                            <li>Skicka all dokument- och metadata som JSON vid request</li>
+                        </ol>
 
-<h2 id="dokumentstruktur-källmaterial">Dokumentstruktur (källmaterial)</h2>
+                        <h2 id="dokumentstruktur-källmaterial">Dokumentstruktur (källmaterial)</h2>
 
-<p>Varje dokument består av tre filer: body.md, sidebar.md och meta.toml.
-Body.md innehåller dokumentets brödtext och innehåll.
-Sidebar.md innehåller kompletterande information som lämpligast läggs i just en sidebar.
-Titeln på sidan specificeras i meta.toml-filen som kompletterar
-varje body.md och sidebar.md-filpar.</p>
+                        <p>Varje dokument består av tre filer: body.md, sidebar.md och meta.toml.
+                            Body.md innehåller dokumentets brödtext och innehåll.
+                            Sidebar.md innehåller kompletterande information som lämpligast läggs i just en sidebar.
+                            Titeln på sidan specificeras i meta.toml-filen som kompletterar
+                        varje body.md och sidebar.md-filpar.</p>
 
-<p>All dokumentation ligger enligt denna struktur i undermappar.
-Ett GitHub-repo med dokumentation kan alltså ha denna struktur:</p>
+                        <p>All dokumentation ligger enligt denna struktur i undermappar.
+                        Ett GitHub-repo med dokumentation kan alltså ha denna struktur:</p>
 
-<pre><code>- body.md
-- sidebar.md
-- meta.toml
-* namnder/
-  - body.md
-  - sidebar.md
-  - meta.toml
-  * dkm/
-    - body.md
-    - sidebar.md
-    - meta.toml
-  * ior/
-    - body.md
-    - sidebar.md
-    - meta.toml
-  * ...
-* sektionen/
-  - body.md
-  - sidebar.md
-  - meta.toml
-  * formalia/
-  * grafik/
-  * funktionarer/
-  * ...
-</code></pre>
+                        <pre><code>- body.md
+                            - sidebar.md
+                            - meta.toml
+                            * namnder/
+                            - body.md
+                            - sidebar.md
+                            - meta.toml
+                            * dkm/
+                            - body.md
+                            - sidebar.md
+                            - meta.toml
+                            * ior/
+                            - body.md
+                            - sidebar.md
+                            - meta.toml
+                            * ...
+                            * sektionen/
+                            - body.md
+                            - sidebar.md
+                            - meta.toml
+                            * formalia/
+                            * grafik/
+                            * funktionarer/
+                            * ...
+                        </code></pre>
 
-<p>Varje mapp, inklusive rotmappen, <em>måste ha</em> alla tre filer; body.md, sidebar.md, meta.toml.
-Om inte alla tre finns kommer Taitan inte att behandla mappen som en giltig path.</p>
+                        <p>Varje mapp, inklusive rotmappen, <em>måste ha</em> alla tre filer; body.md, sidebar.md, meta.toml.
+                        Om inte alla tre finns kommer Taitan inte att behandla mappen som en giltig path.</p>
 
-<h2 id="api-och-användning">API och användning</h2>
+                        <h2 id="api-och-användning">API och användning</h2>
 
-<p>För att hämta ett dokument med tillhörande metadata:</p>
+                        <p>För att hämta ett dokument med tillhörande metadata:</p>
 
-<p><code>GET /:path</code></p>
+                        <p><code>GET /:path</code></p>
 
-<p>Exempelvis</p>
+                        <p>Exempelvis</p>
 
-<h2 id="exempelrespons">Exempelrespons</h2>
+                        <h2 id="exempelrespons">Exempelrespons</h2>
 
-<pre><code class="language-json">{
-  &quot;title&quot;: &quot;Om Oss&quot;,
-  &quot;slug&quot;: &quot;om-oss&quot;,
-  &quot;updated_at&quot;: &quot;2015-11-06T02:04:58Z&quot;,
-  &quot;image&quot;: &quot;http://s3.datasektionen.se/imagex.png&quot;,
-  &quot;body&quot;: &quot;&lt;h1&gt;...&quot;,
-  &quot;sidebar&quot;: &quot;&lt;ul&gt;...&quot;,
-  &quot;anchors&quot;: [{&quot;id&quot;:&quot;vilka-vi-är&quot;, &quot;value&quot;:&quot;Vilka vi är&quot;}],
-  &quot;children&quot;: [
-    { &quot;slug&quot;:&quot;/om-oss/kontakt&quot;, &quot;title&quot;:&quot;Kontakt&quot;, &quot;children&quot;: [
-      {&quot;slug&quot;:&quot;/om-oss/kontakt/nlg&quot;,&quot;title&quot;:&quot;Näringslivsgruppen&quot;}
-    ]},
-    {&quot;slug&quot;:&quot;/om-oss/hitta-hit&quot;,&quot;title&quot;:&quot;Hitta hit&quot;}
-  ]
-}
-</code></pre>
+                        <pre><code class="language-json">{
+                            &quot;title&quot;: &quot;Om Oss&quot;,
+                            &quot;slug&quot;: &quot;om-oss&quot;,
+                            &quot;updated_at&quot;: &quot;2015-11-06T02:04:58Z&quot;,
+                            &quot;image&quot;: &quot;http://s3.datasektionen.se/imagex.png&quot;,
+                            &quot;body&quot;: &quot;&lt;h1&gt;...&quot;,
+                            &quot;sidebar&quot;: &quot;&lt;ul&gt;...&quot;,
+                            &quot;anchors&quot;: [{&quot;id&quot;:&quot;vilka-vi-är&quot;, &quot;value&quot;:&quot;Vilka vi är&quot;}],
+                            &quot;children&quot;: [
+                            { &quot;slug&quot;:&quot;/om-oss/kontakt&quot;, &quot;title&quot;:&quot;Kontakt&quot;, &quot;children&quot;: [
+                                {&quot;slug&quot;:&quot;/om-oss/kontakt/nlg&quot;,&quot;title&quot;:&quot;Näringslivsgruppen&quot;}
+                                ]},
+                                {&quot;slug&quot;:&quot;/om-oss/hitta-hit&quot;,&quot;title&quot;:&quot;Hitta hit&quot;}
+                                ]
+                            }
+                        </code></pre>
 
-<p>Förklaring av responsens olika fält:</p>
+                        <p>Förklaring av responsens olika fält:</p>
 
-<table>
-<thead>
-<tr>
-<th align="center">Attribut</th>
-<th align="center">Förklaring</th>
-</tr>
-</thead>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th align="center">Attribut</th>
+                                    <th align="center">Förklaring</th>
+                                </tr>
+                            </thead>
 
-<tbody>
-<tr>
-<td align="center">title</td>
-<td align="center">Title från meta.toml</td>
-</tr>
+                            <tbody>
+                                <tr>
+                                    <td align="center">title</td>
+                                    <td align="center">Title från meta.toml</td>
+                                </tr>
 
-<tr>
-<td align="center">slug</td>
-<td align="center">Den URL-slug som efterfrågats, exempelvis <code>/api-er/methone</code></td>
-</tr>
+                                <tr>
+                                    <td align="center">slug</td>
+                                    <td align="center">Den URL-slug som efterfrågats, exempelvis <code>/api-er/methone</code></td>
+                                </tr>
 
-<tr>
-<td align="center">updated_at</td>
-<td align="center">Datum och tid då body.md uppdaterades, specificerad enligt ISO 8601-standarde</td>
-</tr>
+                                <tr>
+                                    <td align="center">updated_at</td>
+                                    <td align="center">Datum och tid då body.md uppdaterades, specificerad enligt ISO 8601-standarde</td>
+                                </tr>
 
-<tr>
-<td align="center">image</td>
-<td align="center">URL till ev. bildfil för dokumentet, från meta.toml</td>
-</tr>
+                                <tr>
+                                    <td align="center">image</td>
+                                    <td align="center">URL till ev. bildfil för dokumentet, från meta.toml</td>
+                                </tr>
 
-<tr>
-<td align="center">body</td>
-<td align="center">Data från body.md, HTML-konverterad</td>
-</tr>
+                                <tr>
+                                    <td align="center">body</td>
+                                    <td align="center">Data från body.md, HTML-konverterad</td>
+                                </tr>
 
-<tr>
-<td align="center">sidebar</td>
-<td align="center">Data från sidebar.md, HTML-konverterad</td>
-</tr>
+                                <tr>
+                                    <td align="center">sidebar</td>
+                                    <td align="center">Data från sidebar.md, HTML-konverterad</td>
+                                </tr>
 
-<tr>
-<td align="center">anchors</td>
-<td align="center">Array med objekt bestående av id (HTML anchor-id, ex. #om-oss) samt titel (Om oss) som länkar till olika delar av dokumentet (baseras på nivå 2-headings, dvs <code>##</code> eller --- i Markdown</td>
-</tr>
+                                <tr>
+                                    <td align="center">anchors</td>
+                                    <td align="center">Array med objekt bestående av id (HTML anchor-id, ex. #om-oss) samt titel (Om oss) som länkar till olika delar av dokumentet (baseras på nivå 2-headings, dvs <code>##</code> eller --- i Markdown</td>
+                                </tr>
 
-<tr>
-<td align="center">children</td>
-<td align="center">Array med sidor som kan läggas i navigationsmeny, i form av objekt bestående av slug samt sidtitel. Varje objekt kan också ha en children-key, med samma utseende (rekursivt)</td>
-</tr>
-</tbody>
-</table>
+                                <tr>
+                                    <td align="center">children</td>
+                                    <td align="center">Array med sidor som kan läggas i navigationsmeny, i form av objekt bestående av slug samt sidtitel. Varje objekt kan också ha en children-key, med samma utseende (rekursivt)</td>
+                                </tr>
+                            </tbody>
+                        </table>
 
-<h2 id="kör-och-utveckla-lokalt">Kör och utveckla lokalt</h2>
+                        <h2 id="kör-och-utveckla-lokalt">Kör och utveckla lokalt</h2>
 
-<pre><code class="language-bash">$ go get -u github.com/datasektionen/taitan
-$ taitan -v
-INFO[0000] Our root directory                            Root=dummy-data/
-INFO[0000] Starting server.
-INFO[0000] Listening on port: 4000
-...
-</code></pre>
+                        <pre><code class="language-bash">$ go get -u github.com/datasektionen/taitan
+                            $ taitan -v
+                            INFO[0000] Our root directory                            Root=dummy-data/
+                            INFO[0000] Starting server.
+                            INFO[0000] Listening on port: 4000
+                            ...
+                        </code></pre>
 
-<h2 id="installation-och-konfiguration">Installation och konfiguration</h2>
+                        <h2 id="installation-och-konfiguration">Installation och konfiguration</h2>
 
-<h4 id="flera-instanser-av-taitan">Flera instanser av Taitan</h4>
+                        <h4 id="flera-instanser-av-taitan">Flera instanser av Taitan</h4>
 
-<p>Taitan är byggt för att hantera ett GitHub-repository. För att låta Taitan serva
-innehåll från flera olika repositories behöver man därför köra flera instanser av
-Taitan. Tack vare att varje app i Dokku är en Docker-container, och därmed
-någorlunda isolerad från resten av systemet, är detta inget problem.</p>
+                        <p>Taitan är byggt för att hantera ett GitHub-repository. För att låta Taitan serva
+                            innehåll från flera olika repositories behöver man därför köra flera instanser av
+                            Taitan. Tack vare att varje app i Dokku är en Docker-container, och därmed
+                        någorlunda isolerad från resten av systemet, är detta inget problem.</p>
 
-<h4 id="environment-variabler">Environment-variabler</h4>
+                        <h4 id="environment-variabler">Environment-variabler</h4>
 
-<p>Taitan kräver att två environment-variabler är satta vid körning:</p>
+                        <p>Taitan kräver att två environment-variabler är satta vid körning:</p>
 
-<table>
-<thead>
-<tr>
-<th>Variabelnamn</th>
-<th>Värde/förklaring</th>
-</tr>
-</thead>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Variabelnamn</th>
+                                    <th>Värde/förklaring</th>
+                                </tr>
+                            </thead>
 
-<tbody>
-<tr>
-<td>CONTENT_URL</td>
-<td>URL till Git-repo; exempelvis https://github.com/dsekt/docs.git</td>
-</tr>
+                            <tbody>
+                                <tr>
+                                    <td>CONTENT_URL</td>
+                                    <td>URL till Git-repo; exempelvis https://github.com/dsekt/docs.git</td>
+                                </tr>
 
-<tr>
-<td>TOKEN</td>
-<td>Token från GitHub, genereras under Settings &gt; Personal access tokens. Välj public_repo-rättigheten.</td>
-</tr>
-</tbody>
-</table>
+                                <tr>
+                                    <td>TOKEN</td>
+                                    <td>Token från GitHub, genereras under Settings &gt; Personal access tokens. Välj public_repo-rättigheten.</td>
+                                </tr>
+                            </tbody>
+                        </table>
 
-<h4 id="webhooks">Webhooks</h4>
+                        <h4 id="webhooks">Webhooks</h4>
 
-<p>För att Taitan ska få notifieringar när ett repo uppdateras behöver man lägga till
-en webhook till sin Taitan-installation under (repo) &gt; Settings &gt; Webhooks.</p>
+                        <p>För att Taitan ska få notifieringar när ett repo uppdateras behöver man lägga till
+                        en webhook till sin Taitan-installation under (repo) &gt; Settings &gt; Webhooks.</p>
 
-<p>Tryck på Add Webhook.
-Om din Taitan-instans ligger på <code>http://styrdokument-taitan.datasektionen.se</code>, fyller
-du i denna URL under <code>Payload URL</code>. Content-type ska vara JSON, Secret key kan lämnas tom,
-välj <code>Just the push event</code> under event-valet och spara. Detta pingar Taitan så fort
-en push görs till GitHub-repot, så att Taitan-datan alltid är uppdaterad.</p>
+                        <p>Tryck på Add Webhook.
+                            Om din Taitan-instans ligger på <code>http://styrdokument-taitan.datasektionen.se</code>, fyller
+                            du i denna URL under <code>Payload URL</code>. Content-type ska vara JSON, Secret key kan lämnas tom,
+                            välj <code>Just the push event</code> under event-valet och spara. Detta pingar Taitan så fort
+                        en push görs till GitHub-repot, så att Taitan-datan alltid är uppdaterad.</p>
+                    </div>
+                </div>
+                <!--div id="sidebar">
+                    <div class="sidebar-card">
+                        <h2 id="taitan-gloo">Taitan + Gloo = ♥</h2>
 
-				            	</div>
-				            	<div class="col-md-3" id="sidebar">
-				            		<div class="sidebar-card">
-					            		<h2 id="taitan-gloo">Taitan + Gloo = ♥</h2>
+                        <p>Taitan är det system som tar det Markdown-innehåll, från GitHub, som bland annat
+                        den här dokumentationen baseras på, och gör om denna till JSON.</p>
 
-<p>Taitan är det system som tar det Markdown-innehåll, från GitHub, som bland annat
-den här dokumentationen baseras på, och gör om denna till JSON.</p>
+                        <p>Gloo tar den JSON (rådata) som Taitan producerar och kombinerar denna med
+                        mallar, skrivna i något av de 20 template-språk som Gloo stödjer.</p>
 
-<p>Gloo tar den JSON (rådata) som Taitan producerar och kombinerar denna med
-mallar, skrivna i något av de 20 template-språk som Gloo stödjer.</p>
+                        <p>Tillsammans producerar GitHub, Taitan och Gloo en färdig site för slutanvändare.</p>
 
-<p>Tillsammans producerar GitHub, Taitan och Gloo en färdig site för slutanvändare.</p>
+                        <p>Innehållet redigeras på GitHub, plockas upp och formateras av Taitan, kombineras
+                        med kompletta site-layouter av Gloo och skickas till slutanvändaren.</p>
+                    </div>
 
-<p>Innehållet redigeras på GitHub, plockas upp och formateras av Taitan, kombineras
-med kompletta site-layouter av Gloo och skickas till slutanvändaren.</p>
-                                    </div>
+                    <div class="sidebar-card">
+                        <h2>På den här sidan</h2>
 
-                                    <div class="sidebar-card">
-                                        <h2>På den här sidan</h2>
+                        <ul>
 
-					            		<ul>
+                            <li><a href="#dokumentstruktur-källmaterial">Dokumentstruktur (källmaterial)</a></li>
 
-						            			<li><a href="#dokumentstruktur-källmaterial">Dokumentstruktur (källmaterial)</a></li>
+                            <li><a href="#api-och-användning">API och användning</a></li>
 
-						            			<li><a href="#api-och-användning">API och användning</a></li>
+                            <li><a href="#exempelrespons">Exempelrespons</a></li>
 
-						            			<li><a href="#exempelrespons">Exempelrespons</a></li>
+                            <li><a href="#kör-och-utveckla-lokalt">Kör och utveckla lokalt</a></li>
 
-						            			<li><a href="#kör-och-utveckla-lokalt">Kör och utveckla lokalt</a></li>
+                            <li><a href="#installation-och-konfiguration">Installation och konfiguration</a></li>
 
-						            			<li><a href="#installation-och-konfiguration">Installation och konfiguration</a></li>
-
-										</ul>
-                                    </div>
-
-				            	</div>
-				            </div>
-				        </div>
-				        <div class="clear"></div>
-				    </div>
-				
-			</div>
+                        </ul>
+                    </div>
+                </div-->
+            </div>
+            <div class="clear"></div>
         </div>
-    </body>
+
+    </div>
+</div>
+<script type="text/javascript">
+    window.methone_conf = {
+        system_name: "aurora",
+        color_scheme: "blue",
+        links: [
+        {
+            str: "Dokumentation",
+            href: "/"
+        },
+        {
+            str: "Kom igång",
+            href: "/kom-igang/"
+        },
+        {
+            str: "API:er",
+            href: "/api-er/"
+        },
+        {
+            str: "User Interface",
+            href: "/ui/"
+        }
+        ]
+    }
+</script>
+<script src="http://methone.datasektionen.se/bar.js"></script>
+</body>
 </html>

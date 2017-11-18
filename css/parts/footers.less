@@ -26,6 +26,59 @@
   }
 }
 
-#methone-header {
-  background: red !important;
+.footer-push {
+  height: 200px;
+
+  @media screen and (max-width: 1200px) {
+    height: 260px;
+  }
+
+  @media screen and (max-width: 650px) {
+    height: 300px;
+  }
+}
+#footer {
+  width: 100%;
+  max-width: none;
+  background: #ddd;
+  color: #999;
+  margin-top: -200px;
+  height: 200px;
+
+  .col {
+    width: 33%;
+    float: left;
+    padding: 30px 20px;
+    text-align: center;
+  }
+
+  @media screen and (max-width: 1200px) {
+    height: 260px;
+    margin-top: -260px;
+  }
+
+  @media screen and (max-width: 650px) {
+    height: auto;
+    min-height: 300px;
+    margin-top: -300px;
+
+    .col {
+      width: 100%;
+      border-bottom: 1px solid #ccc;
+    }
+    .col:last-child {
+      border: none;
+    }
+  }
+
+  .wrapper {
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+  a {
+    color: #666;
+  }
+  a.button {
+    background: #eee;
+  }
 }
