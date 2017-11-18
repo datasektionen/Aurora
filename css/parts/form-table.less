@@ -8,6 +8,14 @@
     border-radius: 2px;
     border: 1px solid #eee;
 
+    @media screen and (max-width: 900px) {
+      &.wide {
+          display: block;
+          width: auto;
+          margin: 0 -20px;
+          box-shadow: none;
+      }
+    }
     .form-table-row {
       display: table-row;
     }
