@@ -42,8 +42,10 @@
         h1 { .text-theme-color; }
 
         a { .text-theme-color; }
-        table thead { .theme-color; .btn-color; }
-        h3 { border-left: 5px solid @darken-1; }
+        table thead {
+            color: @theme-color;
+            background: @btn-color;
+        }
     }
 
     .footer-toolbar {
