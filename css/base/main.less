@@ -22,6 +22,10 @@ body {
 
 a {
     color: @body_text_color;
+    transition: color 0.1s ease-in-out, background-color 0.1s ease-in-out;
+    &:focus {
+        outline: 0;
+    }
     &, &:hover {
         text-decoration: none !important;
     }
@@ -45,13 +49,13 @@ button, .button {
     appearance: none;
     border: none;
 
-    &:hover {
+    &:hover, &:focus {
         box-shadow: 0 2px 5px rgba(0, 0, 0, .3);
     }
 
     &.subtle, .subtle {
         font-weight: 300;
-        &, &:hover {
+        &, &:hover, &:focus {
             box-shadow: none;
         }
     }
