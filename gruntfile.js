@@ -1,6 +1,4 @@
-﻿// gruntfile.js
 module.exports = function (grunt) {
-
     grunt.initConfig({
         less: {
             dev: {
@@ -22,5 +20,4 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
 
     grunt.registerTask('default', ['less']);
-
 };
