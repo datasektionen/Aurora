@@ -28,7 +28,7 @@ job "aurora" {
       }
 
       resources {
-        memory = 20
+        memory = 10
       }
     }
   }
